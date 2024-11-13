@@ -1,0 +1,14 @@
+[package]
+name = "fangous/rbxbehaviortree"
+description = "A simple behavior tree implementation for Roblox."
+version = "0.0.1-test"
+license = "MIT"
+authors = ["Vincenzo Colton Prochilo"]
+realm = "shared"
+registry = "https://github.com/upliftgames/wally-index"
+exclude = ["**"]
+include = ["src", "src/*", "init.luau", "default.project.json", "wally.lock", "wally.toml", "README.md", "LICENSE.md"]
+
+[dependencies]
+Trove = "sleitnick/trove@1.3.0"
+Timer = "sleitnick/timer@1.1.2"
