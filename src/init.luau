@@ -91,11 +91,12 @@ BehaviorTree.NodeResults = {
 	@within RbxBehaviorTree
 	@param tickFrequency number -- Frequency at which the behavior tree is updated (in seconds).
 	@param rootNode Node -- The root node of the behavior tree.
+	@param cleanup (() -> ())? -- Optional function to run after the behavior tree is destroyed.
 	@return function -- Returns a function to destroy the behavior tree.
 
 	Creates a new behavior tree with a given tick frequency and root node. The behavior tree will automatically update at the given frequency until it is destroyed. This function returns a function that can be called to destroy the behavior tree.
 ]=]
-function BehaviorTree.New(tickFrequency: number, rootNode: Node)
+function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() -> ())?)
 	assert(rootNode.NodeType ~= "ACTION", "'rootNode' cannot be an action node. Must be a fallback or sequence node.")
 
 	local treeTrove = Trove.new()
@@ -119,6 +120,9 @@ function BehaviorTree.New(tickFrequency: number, rootNode: Node)
 
 	return function()
 		treeTrove:Destroy()
+		if cleanup then
+			cleanup()
+		end
 	end
 end
 
