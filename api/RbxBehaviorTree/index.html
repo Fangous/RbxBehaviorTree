@@ -8,8 +8,8 @@
 Provides nodes and functions to create complex behavior trees with fallback, sequence, and action nodes."><meta data-rh="true" property="og:description" content="A module for creating and managing behavior trees. Behavior trees are commonly used in game AI to control NPC behavior.
 
 Provides nodes and functions to create complex behavior trees with fallback, sequence, and action nodes."><link data-rh="true" rel="canonical" href="https://fangous.github.io/RbxBehaviorTree/api/RbxBehaviorTree"><link data-rh="true" rel="alternate" href="https://fangous.github.io/RbxBehaviorTree/api/RbxBehaviorTree" hreflang="en"><link data-rh="true" rel="alternate" href="https://fangous.github.io/RbxBehaviorTree/api/RbxBehaviorTree" hreflang="x-default"><link rel="stylesheet" href="/RbxBehaviorTree/assets/css/styles.e1adec2f.css">
-<link rel="preload" href="/RbxBehaviorTree/assets/js/runtime~main.54eff6db.js" as="script">
-<link rel="preload" href="/RbxBehaviorTree/assets/js/main.83f6acc6.js" as="script">
+<link rel="preload" href="/RbxBehaviorTree/assets/js/runtime~main.8821cf73.js" as="script">
+<link rel="preload" href="/RbxBehaviorTree/assets/js/main.f6ad98ee.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -18,38 +18,48 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
 <p>Provides nodes and functions to create complex behavior trees with fallback, sequence, and action nodes.</p>
 </div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Node"><code style="text-decoration:none">Node</code><a href="#Node" class="hash-link" aria-label="Direct link to Node" title="Direct link to Node">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L22"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>Node<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Type<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeType">NodeType</a></code></div><div><code>TickNode<!-- -->: </code><code class="purple_ieR2">(</code><code>subTree<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeTree">NodeTree</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeResult">NodeResult</a></code></div><div><code>SubTree<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeTree">NodeTree</a></code></div></div><code>}</code></div><div>
 <p>A single node in a behavior tree.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeTree"><code style="text-decoration:none">NodeTree</code><a href="#NodeTree" class="hash-link" aria-label="Direct link to NodeTree" title="Direct link to NodeTree">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L33"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeTree<!-- --> = </code> <code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><code class="purple_ieR2">}</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeTree"><code style="text-decoration:none">NodeTree</code><a href="#NodeTree" class="hash-link" aria-label="Direct link to NodeTree" title="Direct link to NodeTree">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L34"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeTree<!-- --> = </code> <code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><code class="purple_ieR2">}</code></div><div>
 <p>An array of <code>Node</code> elements representing a tree structure.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeType"><code style="text-decoration:none">NodeType</code><a href="#NodeType" class="hash-link" aria-label="Direct link to NodeType" title="Direct link to NodeType">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L40"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeType<!-- --> = </code> <code class="blue_P4bS">&quot;FALLBACK&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;SEQUENCE&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;ACTION&quot;</code></div><div>
-<p>Enumeration of node types that define behavior when ticked.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeResult"><code style="text-decoration:none">NodeResult</code><a href="#NodeResult" class="hash-link" aria-label="Direct link to NodeResult" title="Direct link to NodeResult">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L47"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeResult<!-- --> = </code> <code class="blue_P4bS">&quot;SUCCESS&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;FAILURE&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;RUNNING&quot;</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeType"><code style="text-decoration:none">NodeType</code><a href="#NodeType" class="hash-link" aria-label="Direct link to NodeType" title="Direct link to NodeType">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L41"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeType<!-- --> = </code> <code class="blue_P4bS">&quot;FALLBACK&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;SEQUENCE&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;ACTION&quot;</code></div><div>
+<p>Possible node types that define behavior when ticked.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeResult"><code style="text-decoration:none">NodeResult</code><a href="#NodeResult" class="hash-link" aria-label="Direct link to NodeResult" title="Direct link to NodeResult">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L48"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeResult<!-- --> = </code> <code class="blue_P4bS">&quot;SUCCESS&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;FAILURE&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;RUNNING&quot;</code></div><div>
+<p>Possible results for a node after execution.</p>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeResults"><code style="text-decoration:none">NodeResults</code><a href="#NodeResults" class="hash-link" aria-label="Direct link to NodeResults" title="Direct link to NodeResults">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L83"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.<!-- -->NodeResults<!-- -->:<!-- --> </code> <code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeResult">NodeResult</a></code><code class="purple_ieR2">}</code></div><div>
 <p>Enumeration of possible results for a node after execution.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="New"><code style="text-decoration:none">New</code><a href="#New" class="hash-link" aria-label="Direct link to New" title="Direct link to New">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L85"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">New</code><code>(</code><div class="inset_uKQm"><div><code>tickFrequency<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="New"><code style="text-decoration:none">New</code><a href="#New" class="hash-link" aria-label="Direct link to New" title="Direct link to New">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L99"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">New</code><code>(</code><div class="inset_uKQm"><div><code>tickFrequency<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>Frequency at which the behavior tree is updated (in seconds).</p>
-</span></span></div><div><code>rootNode<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><span class="inlineDescription_G7Er">-- <span>
+</span></span></div><div><code>rootNode<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The root node of the behavior tree.</p>
+</span></span></div><div><code>cleanup<!-- -->: </code><code class="purple_ieR2">(</code><code class="green_DgR4">(</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><code class="green_DgR4">)</code><code class="purple_ieR2">)</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+<p>Optional function to run after the behavior tree is destroyed.</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS">function</code><span class="inlineDescription_G7Er">-- <span>
 <p>Returns a function to destroy the behavior tree.</p>
 </span></span></div><div>
 <p>Creates a new behavior tree with a given tick frequency and root node. The behavior tree will automatically update at the given frequency until it is destroyed. This function returns a function that can be called to destroy the behavior tree.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FallbackNode"><code style="text-decoration:none">FallbackNode</code><a href="#FallbackNode" class="hash-link" aria-label="Direct link to FallbackNode" title="Direct link to FallbackNode">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L118"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">FallbackNode</code><code>(</code><div class="inset_uKQm"><div><code>nodeTree<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeTree">NodeTree</a></code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FallbackNode"><code style="text-decoration:none">FallbackNode</code><a href="#FallbackNode" class="hash-link" aria-label="Direct link to FallbackNode" title="Direct link to FallbackNode">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L138"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">FallbackNode</code><code>(</code><div class="inset_uKQm"><div><code>nodeName<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>Name of the fallback node.</p>
+</span></span></div><div><code>nodeTree<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeTree">NodeTree</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>Array of child nodes for the Fallback node.</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>Returns a new Fallback node.</p>
 </span></span></div><div>
 <p>Primitive for creating a FallbackNode. Think of this as your typical "OR" gate in programming. The first child node to return <code>SUCCESS</code> will cause the FallbackNode to return <code>SUCCESS</code>.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SequenceNode"><code style="text-decoration:none">SequenceNode</code><a href="#SequenceNode" class="hash-link" aria-label="Direct link to SequenceNode" title="Direct link to SequenceNode">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L134"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">SequenceNode</code><code>(</code><div class="inset_uKQm"><div><code>nodeTree<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeTree">NodeTree</a></code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SequenceNode"><code style="text-decoration:none">SequenceNode</code><a href="#SequenceNode" class="hash-link" aria-label="Direct link to SequenceNode" title="Direct link to SequenceNode">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L156"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">SequenceNode</code><code>(</code><div class="inset_uKQm"><div><code>nodeName<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>Name of the sequence node.</p>
+</span></span></div><div><code>nodeTree<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeTree">NodeTree</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>Array of child nodes for the Sequence node.</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>Returns a new Sequence node.</p>
 </span></span></div><div>
 <p>Primitive for creating a SequenceNode. Think of this as your typical "AND" gate in programming. All child nodes must return <code>SUCCESS</code> for the SequenceNode to return <code>SUCCESS</code>.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ActionNode"><code style="text-decoration:none">ActionNode</code><a href="#ActionNode" class="hash-link" aria-label="Direct link to ActionNode" title="Direct link to ActionNode">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L150"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">ActionNode</code><code>(</code><div class="inset_uKQm"><div><code>action<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeAction">NodeAction</a></code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ActionNode"><code style="text-decoration:none">ActionNode</code><a href="#ActionNode" class="hash-link" aria-label="Direct link to ActionNode" title="Direct link to ActionNode">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Fangous/RbxBehaviorTree/blob/main/src/init.luau#L174"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>RbxBehaviorTree<!-- -->.</code><code class="green_DgR4">ActionNode</code><code>(</code><div class="inset_uKQm"><div><code>nodeName<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>Name of the action node.</p>
+</span></span></div><div><code>action<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeAction">NodeAction</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>A function that defines the action and returns a <code>NodeResult</code>.</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#Node">Node</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>Returns a new Action node.</p>
 </span></span></div><h3>Types</h3><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NodeAction"><a href="#NodeAction" class="hash-link" aria-label="Direct link to NodeAction" title="Direct link to NodeAction">​</a></h3><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NodeAction<!-- --> = </code> <code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RbxBehaviorTree/api/RbxBehaviorTree#NodeResult">NodeResult</a></code></div><div></div><div>
-<p>Primitive for creating an custom action to be used within a NodeTree. An ActionNode should never be a behavior tree's root node, as then there would be no "tree" to traverse.</p>
+<p>Primitive for creating an custom action to be used within a NodeTree. An ActionNode cannot be a behavior tree's root node, as then there would be no "tree" to traverse.</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
@@ -65,6 +75,11 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
                     &quot;name&quot;: &quot;rootNode&quot;,
                     &quot;desc&quot;: &quot;The root node of the behavior tree.&quot;,
                     &quot;lua_type&quot;: &quot;Node&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;cleanup&quot;,
+                    &quot;desc&quot;: &quot;Optional function to run after the behavior tree is destroyed.&quot;,
+                    &quot;lua_type&quot;: &quot;(() -&gt; ())?&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -75,7 +90,7 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 85,
+                &quot;line&quot;: 99,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         },
@@ -83,6 +98,11 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             &quot;name&quot;: &quot;FallbackNode&quot;,
             &quot;desc&quot;: &quot;Primitive for creating a FallbackNode. Think of this as your typical \&quot;OR\&quot; gate in programming. The first child node to return `SUCCESS` will cause the FallbackNode to return `SUCCESS`.&quot;,
             &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;nodeName&quot;,
+                    &quot;desc&quot;: &quot;Name of the fallback node.&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                },
                 {
                     &quot;name&quot;: &quot;nodeTree&quot;,
                     &quot;desc&quot;: &quot;Array of child nodes for the Fallback node.&quot;,
@@ -97,7 +117,7 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 118,
+                &quot;line&quot;: 138,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         },
@@ -105,6 +125,11 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             &quot;name&quot;: &quot;SequenceNode&quot;,
             &quot;desc&quot;: &quot;Primitive for creating a SequenceNode. Think of this as your typical \&quot;AND\&quot; gate in programming. All child nodes must return `SUCCESS` for the SequenceNode to return `SUCCESS`.&quot;,
             &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;nodeName&quot;,
+                    &quot;desc&quot;: &quot;Name of the sequence node.&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                },
                 {
                     &quot;name&quot;: &quot;nodeTree&quot;,
                     &quot;desc&quot;: &quot;Array of child nodes for the Sequence node.&quot;,
@@ -119,14 +144,19 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 134,
+                &quot;line&quot;: 156,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;ActionNode&quot;,
-            &quot;desc&quot;: &quot;Primitive for creating an custom action to be used within a NodeTree. An ActionNode should never be a behavior tree&#x27;s root node, as then there would be no \&quot;tree\&quot; to traverse.&quot;,
+            &quot;desc&quot;: &quot;Primitive for creating an custom action to be used within a NodeTree. An ActionNode cannot be a behavior tree&#x27;s root node, as then there would be no \&quot;tree\&quot; to traverse.&quot;,
             &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;nodeName&quot;,
+                    &quot;desc&quot;: &quot;Name of the action node.&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                },
                 {
                     &quot;name&quot;: &quot;action&quot;,
                     &quot;desc&quot;: &quot;A function that defines the action and returns a `NodeResult`.&quot;,
@@ -141,12 +171,22 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 150,
+                &quot;line&quot;: 174,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         }
     ],
-    &quot;properties&quot;: [],
+    &quot;properties&quot;: [
+        {
+            &quot;name&quot;: &quot;NodeResults&quot;,
+            &quot;desc&quot;: &quot;Enumeration of possible results for a node after execution.&quot;,
+            &quot;lua_type&quot;: &quot;{ [string]: NodeResult }&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 83,
+                &quot;path&quot;: &quot;src/init.luau&quot;
+            }
+        }
+    ],
     &quot;types&quot;: [
         {
             &quot;name&quot;: &quot;Node&quot;,
@@ -178,25 +218,25 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             &quot;desc&quot;: &quot;An array of `Node` elements representing a tree structure.&quot;,
             &quot;lua_type&quot;: &quot;{Node}&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 33,
+                &quot;line&quot;: 34,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;NodeType&quot;,
-            &quot;desc&quot;: &quot;Enumeration of node types that define behavior when ticked.&quot;,
+            &quot;desc&quot;: &quot;Possible node types that define behavior when ticked.&quot;,
             &quot;lua_type&quot;: &quot;\&quot;FALLBACK\&quot; | \&quot;SEQUENCE\&quot; | \&quot;ACTION\&quot;&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 40,
+                &quot;line&quot;: 41,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;NodeResult&quot;,
-            &quot;desc&quot;: &quot;Enumeration of possible results for a node after execution.&quot;,
+            &quot;desc&quot;: &quot;Possible results for a node after execution.&quot;,
             &quot;lua_type&quot;: &quot;\&quot;SUCCESS\&quot; | \&quot;FAILURE\&quot; | \&quot;RUNNING\&quot;&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 47,
+                &quot;line&quot;: 48,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         },
@@ -205,7 +245,7 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
             &quot;desc&quot;: &quot;&quot;,
             &quot;lua_type&quot;: &quot;() -&gt; NodeResult&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 52,
+                &quot;line&quot;: 53,
                 &quot;path&quot;: &quot;src/init.luau&quot;
             }
         }
@@ -216,8 +256,8 @@ Provides nodes and functions to create complex behavior trees with fallback, seq
         &quot;line&quot;: 8,
         &quot;path&quot;: &quot;src/init.luau&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Node" class="table-of-contents__link toc-highlight">Node</a></li><li><a href="#NodeAction" class="table-of-contents__link toc-highlight">NodeAction</a></li><li><a href="#NodeResult" class="table-of-contents__link toc-highlight">NodeResult</a></li><li><a href="#NodeTree" class="table-of-contents__link toc-highlight">NodeTree</a></li><li><a href="#NodeType" class="table-of-contents__link toc-highlight">NodeType</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ActionNode" class="table-of-contents__link toc-highlight">.ActionNode</a></li><li><a href="#FallbackNode" class="table-of-contents__link toc-highlight">.FallbackNode</a></li><li><a href="#New" class="table-of-contents__link toc-highlight">.New</a></li><li><a href="#SequenceNode" class="table-of-contents__link toc-highlight">.SequenceNode</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Fangous. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/RbxBehaviorTree/assets/js/runtime~main.54eff6db.js"></script>
-<script src="/RbxBehaviorTree/assets/js/main.83f6acc6.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Node" class="table-of-contents__link toc-highlight">Node</a></li><li><a href="#NodeAction" class="table-of-contents__link toc-highlight">NodeAction</a></li><li><a href="#NodeResult" class="table-of-contents__link toc-highlight">NodeResult</a></li><li><a href="#NodeTree" class="table-of-contents__link toc-highlight">NodeTree</a></li><li><a href="#NodeType" class="table-of-contents__link toc-highlight">NodeType</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#NodeResults" class="table-of-contents__link toc-highlight">NodeResults</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ActionNode" class="table-of-contents__link toc-highlight">.ActionNode</a></li><li><a href="#FallbackNode" class="table-of-contents__link toc-highlight">.FallbackNode</a></li><li><a href="#New" class="table-of-contents__link toc-highlight">.New</a></li><li><a href="#SequenceNode" class="table-of-contents__link toc-highlight">.SequenceNode</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Fangous. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/RbxBehaviorTree/assets/js/runtime~main.8821cf73.js"></script>
+<script src="/RbxBehaviorTree/assets/js/main.f6ad98ee.js"></script>
 </body>
 </html>
