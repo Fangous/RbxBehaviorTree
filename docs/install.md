@@ -1,11 +1,11 @@
 ---
-title: Installation
+title: Install
 sidebar_position: 2
 ---
 
 # Installation
 
-Add this line to your ```wally.toml``` dependencies:
+You can find our wally package [here](https://wally.run/package/fangous/rbxbehaviortree) or add this line to your ```wally.toml``` file:
 ```toml
-RbxBehaviorTree = "fangous/rbxbehaviortree@0.1.2"
+rbxbehaviortree = "fangous/rbxbehaviortree@0.1.2"
 ```
