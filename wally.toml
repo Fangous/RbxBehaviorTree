@@ -1,7 +1,7 @@
 [package]
 name = "fangous/rbxbehaviortree"
 description = "A simple behavior tree implementation for Roblox."
-version = "0.2.0"
+version = "0.2.0-test"
 license = "MIT"
 authors = ["Vincenzo Colton Prochilo"]
 realm = "shared"
