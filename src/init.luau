@@ -20,6 +20,7 @@ local Timer = require(script.Parent.Timer)
 	A single node in a behavior tree.
 ]=]
 export type Node = {
+	NodeName: string,
 	NodeType: NodeType,
 	TickNode: (subTree: NodeTree) -> NodeResult,
 	SubTree: NodeTree,
@@ -35,14 +36,14 @@ export type NodeTree = { Node }
 	@type NodeType "FALLBACK" | "SEQUENCE" | "ACTION"
 	@within RbxBehaviorTree
 
-	Enumeration of node types that define behavior when ticked.
+	Possible node types that define behavior when ticked.
 ]=]
 export type NodeType = "FALLBACK" | "SEQUENCE" | "ACTION"
 --[=[
 	@type NodeResult "SUCCESS" | "FAILURE" | "RUNNING"
 	@within RbxBehaviorTree
 
-	Enumeration of possible results for a node after execution.
+	Possible results for a node after execution.
 ]=]
 export type NodeResult = "SUCCESS" | "FAILURE" | "RUNNING"
 --[=[
@@ -74,6 +75,18 @@ end
 local BehaviorTree = {}
 
 --[=[
+	@prop NodeResults { [string]: NodeResult }
+	@within RbxBehaviorTree
+
+	Enumeration of possible results for a node after execution.
+]=]
+BehaviorTree.NodeResults = {
+	["SUCCESS"] = "SUCCESS",
+	["FAILURE"] = "FAILURE",
+	["RUNNING"] = "RUNNING",
+}
+
+--[=[
 	@function New
 	@within RbxBehaviorTree
 	@param tickFrequency number -- Frequency at which the behavior tree is updated (in seconds).
@@ -83,6 +96,8 @@ local BehaviorTree = {}
 	Creates a new behavior tree with a given tick frequency and root node. The behavior tree will automatically update at the given frequency until it is destroyed. This function returns a function that can be called to destroy the behavior tree.
 ]=]
 function BehaviorTree.New(tickFrequency: number, rootNode: Node)
+	assert(rootNode.NodeType ~= "ACTION", "'rootNode' cannot be an action node. Must be a fallback or sequence node.")
+
 	local treeTrove = Trove.new()
 	local runningNode: Node? = nil
 
@@ -110,13 +125,15 @@ end
 --[=[
 	@function FallbackNode
 	@within RbxBehaviorTree
+	@param nodeName string -- Name of the fallback node.
 	@param nodeTree NodeTree -- Array of child nodes for the Fallback node.
 	@return Node -- Returns a new Fallback node.
 
 	Primitive for creating a FallbackNode. Think of this as your typical "OR" gate in programming. The first child node to return `SUCCESS` will cause the FallbackNode to return `SUCCESS`.
 ]=]
-function BehaviorTree.FallbackNode(nodeTree: NodeTree): Node
+function BehaviorTree.FallbackNode(nodeName: string, nodeTree: NodeTree): Node
 	return {
+		NodeName = nodeName,
 		NodeType = "FALLBACK",
 		TickNode = tickFallbackNode,
 		SubTree = nodeTree,
@@ -126,13 +143,15 @@ end
 --[=[
 	@function SequenceNode
 	@within RbxBehaviorTree
+	@param nodeName string -- Name of the sequence node.
 	@param nodeTree NodeTree -- Array of child nodes for the Sequence node.
 	@return Node -- Returns a new Sequence node.
 
 	Primitive for creating a SequenceNode. Think of this as your typical "AND" gate in programming. All child nodes must return `SUCCESS` for the SequenceNode to return `SUCCESS`.
 ]=]
-function BehaviorTree.SequenceNode(nodeTree: NodeTree): Node
+function BehaviorTree.SequenceNode(nodeName: string, nodeTree: NodeTree): Node
 	return {
+		NodeName = nodeName,
 		NodeType = "SEQUENCE",
 		TickNode = tickSequenceNode,
 		SubTree = nodeTree,
@@ -142,13 +161,15 @@ end
 --[=[
 	@function ActionNode
 	@within RbxBehaviorTree
+	@param nodeName string -- Name of the action node.
 	@param action NodeAction -- A function that defines the action and returns a `NodeResult`.
 	@return Node -- Returns a new Action node.
 
-	Primitive for creating an custom action to be used within a NodeTree. An ActionNode should never be a behavior tree's root node, as then there would be no "tree" to traverse.
+	Primitive for creating an custom action to be used within a NodeTree. An ActionNode cannot be a behavior tree's root node, as then there would be no "tree" to traverse.
 ]=]
-function BehaviorTree.ActionNode(action: NodeAction): Node
+function BehaviorTree.ActionNode(nodeName: string, action: NodeAction): Node
 	return {
+		NodeName = nodeName,
 		NodeType = "ACTION",
 		TickNode = function()
 			return action()
