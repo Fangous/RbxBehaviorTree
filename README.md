@@ -11,6 +11,7 @@
 
 # RbxBehaviorTree
 
-A simple behavior tree implementation for Roblox. Plugin is currently in development.
+A simple behavior tree implementation for Roblox. The [plugin](https://github.com/Fangous/RbxBehaviorTree) is currently in development.
 
-[View docs →](https://fangous.github.io/RbxBehaviorTree/)
+[View docs](https://fangous.github.io/RbxBehaviorTree/)
+
