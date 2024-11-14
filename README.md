@@ -4,8 +4,11 @@
       <img src="https://github.com/Fangous/RbxBehaviorTree/actions/workflows/wally.yaml/badge.svg" alt="Build and release status" />
     </a>
   </p>
-  <p>A simple behavior tree implementation for Roblox.</p>
-  <a href="https://github.com/Fangous/RbxBehaviorTree">View docs →</a>
+  <p></p>
 </div>
 
 # RbxBehaviorTree
+
+A simple behavior tree implementation for Roblox.
+
+[View docs →](https://github.com/Fangous/RbxBehaviorTree)
