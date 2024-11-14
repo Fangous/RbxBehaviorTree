@@ -9,55 +9,87 @@ Here is an example ```TestTree.luau``` module:
 
 ```lua
 --!strict
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local RbxBehaviorTree = require(ReplicatedStorage.Packages.RbxBehaviorTree)
+local RbxBehaviorTree = require(path.to.RbxBehaviorTree)
 
 local FallbackNode = RbxBehaviorTree.FallbackNode
 local SequenceNode = RbxBehaviorTree.SequenceNode
 local ActionNode = RbxBehaviorTree.ActionNode
+local NodeResults = RbxBehaviorTree.NodeResults
 
 return function(object: any)
-	object:SetAttribute("Number", 0)
+	local fireAlarmOn = false
+	local distanceFromBuilding = 0
+	local safeDistance = 5
+	local hasApple = false
+	local hasSandwich = true
+	local hasBanana = true
+	local isBananaOpen = false
 
-	local nodeTree = SequenceNode {
-		FallbackNode {
-			ActionNode(function()
-				print("First action succeeded!")
-				return "SUCCESS"
-			end),
-			ActionNode(function()
-				warn("We will never get here!")
-				return "FAILURE"
-			end),
-		},
-		SequenceNode {
-			FallbackNode {
-				ActionNode(function()
-					print("Second action succeeded!")
-					return "SUCCESS"
-				end),
-				ActionNode(function()
-					warn("We will never get here!")
-					return "FAILURE"
-				end),
-			},
-			ActionNode(function()
-				local currentNumber = object:GetAttribute("Number")
-
-				if currentNumber >= 5 then
-					print("Third action succeeded!")
-					return "SUCCESS"
+	local nodeTree = SequenceNode "Root" {
+		FallbackNode "CheckForFireAlarm" {
+			ActionNode "FireAlarmOff" function()
+				if not fireAlarmOn then
+					print("No fire alarm")
+					return NodeResults.SUCCESS
 				else
-					print("Incrementing number...")
-					object:SetAttribute("Number", currentNumber + 1)
-					return "RUNNING"
+					print("Fire alarm is on!")
+					return NodeResults.FAILURE
 				end
-			end),
-			ActionNode(function()
-				warn("Fourth action succeeded!")
-				return "SUCCESS"
-			end),
+			end,
+			ActionNode "RunAway" function()
+				if distanceFromBuilding < safeDistance then
+					distanceFromBuilding += 1
+					print("Run away!")
+					return NodeResults.RUNNING
+				else
+					return NodeResults.SUCCESS
+				end
+			end,
+		},
+		FallbackNode "EatFood" {
+			ActionNode "EatApple" function()
+				if hasApple then
+					hasApple = false
+					print("Ate apple!")
+					return NodeResults.SUCCESS
+				else
+					print("We don't have an apple!")
+					return NodeResults.FAILURE
+				end
+			end,
+			ActionNode "EatSandwich" function()
+				if hasSandwich then
+					hasSandwich = false
+					print("Ate sandwich!")
+					return NodeResults.SUCCESS
+				else
+					print("We don't have a sandwich!")
+					return NodeResults.FAILURE
+				end
+			end,
+			SequenceNode "EatBanana" {
+				ActionNode "OpenBanana" function()
+					if hasBanana then
+						isBananaOpen = true
+						print("Opened banana!")
+						return NodeResults.SUCCESS
+					else
+						print("We can't open a non-existent banana!")
+						return NodeResults.FAILURE
+					end
+				end,
+				ActionNode "EatBanana" function()
+					if hasBanana then
+						hasBanana = false
+						print("Ate banana!")
+						return NodeResults.SUCCESS
+					else
+						print("Where is our banana?")
+						--Currently, this will never print, since our parent SequenceNode will always fail out at "OpenBanana"
+						return NodeResults.FAILURE
+					end
+				end,
+			},
 		},
 	}
 
@@ -72,5 +104,5 @@ local TestTree = require(path.to.TestTree)
 
 local newTestTree = TestTree(workspace.Baseplate)
 task.wait(10)
-newTestTree()
+newTestTree() --destroy newTestTree
 ```
