@@ -9,9 +9,7 @@ Here is an example ```TestTree.luau``` module:
 
 ```lua
 --!strict
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local RbxBehaviorTree = require(ReplicatedStorage.Packages.RbxBehaviorTree)
+local RbxBehaviorTree = require(path.to.RbxBehaviorTree)
 
 local FallbackNode = RbxBehaviorTree.FallbackNode
 local SequenceNode = RbxBehaviorTree.SequenceNode
@@ -72,5 +70,5 @@ local TestTree = require(path.to.TestTree)
 
 local newTestTree = TestTree(workspace.Baseplate)
 task.wait(10)
-newTestTree()
+newTestTree() --destroy newTestTree
 ```
