@@ -1,0 +1,27 @@
+title = "RbxBehaviorTree"
+gitRepoUrl = "https://github.com/Fangous/RbxBehaviorTree"
+gitSourceBranch = "main"
+projectName = "RbxBehaviorTree"
+url = "https://fangous.github.io"
+tagline = "A simple behavior tree implementation for Roblox."
+autoSectionPath = "src"
+
+[docusaurus]
+url = "https://fangous.github.io"
+baseUrl = "/RbxBehaviorTree"
+
+[home]
+enabled = true
+includeReadme = false
+
+[[home.features]]
+title = "Plugin"
+description = "Explain that there is a plugin"
+
+[[home.features]]
+title = "Usage"
+description = "Describe what it does"
+
+[[home.features]]
+title = "Something Else"
+description = "Uhh idk"
