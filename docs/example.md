@@ -79,7 +79,7 @@ return function(object: any)
 					end
 				end),
 				ActionNode("EatBanana", function()
-					if hasBanana then
+					if hasBanana and isBananaOpen then
 						hasBanana = false
 						print("Ate banana!")
 						return NodeResults.SUCCESS
