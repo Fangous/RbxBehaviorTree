@@ -84,7 +84,7 @@ BehaviorTree.NodeResults = {
 	["SUCCESS"] = "SUCCESS",
 	["FAILURE"] = "FAILURE",
 	["RUNNING"] = "RUNNING",
-}
+} :: { [string]: NodeResult }
 
 --[=[
 	@function New
