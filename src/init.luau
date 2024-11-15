@@ -64,7 +64,7 @@ export type BehaviorTree = {
 	Destroy: () -> (),
 }
 
-local isStudio = RunService:IsStudio()
+local isRunning = RunService:IsRunning()
 
 local function scanTreeForResult(subTree: NodeTree, excludedResult: NodeResult): NodeResult
 	for _, child in subTree do
@@ -140,7 +140,7 @@ function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() ->
 		return result :: NodeResult
 	end
 
-	if not isStudio then
+	if isRunning then
 		treeTrove:Add(Timer.Simple(tickFrequency, function()
 			tickNode(runningNode or rootNode)
 		end, true, RunService.Heartbeat, os.clock))
