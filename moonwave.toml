@@ -15,13 +15,13 @@ enabled = true
 includeReadme = false
 
 [[home.features]]
-title = "Plugin"
-description = "Explain that there is a plugin"
+title = "Visualizer Plugin"
+description = "Our plugin allows for quick and easy debugging of larger behavior trees."
 
 [[home.features]]
-title = "Usage"
-description = "Describe what it does"
+title = "Rojo Friendly"
+description = "All of your behavior trees are created declaratively using primitives."
 
 [[home.features]]
-title = "Something Else"
-description = "Uhh idk"
+title = "Composable"
+description = "Nodes used by multiple behavior trees can be broken up into modules/factories for easy reuse."
