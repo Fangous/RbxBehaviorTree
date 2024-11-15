@@ -103,5 +103,6 @@ You can now create a new TestTree behavior tree and clean it up after 10 seconds
 local TestTree = require(path.to.TestTree)
 
 local newTestTree = TestTree(workspace.Baseplate)
-task.delay(10, newTestTree) --destroy newTestTree
+task.wait(10)
+newTestTree.Destroy() -- Clean up newTestTree
 ```
