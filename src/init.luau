@@ -38,7 +38,7 @@ export type NodeTree = { Node }
 
 	Possible node types that define behavior when ticked.
 ]=]
-export type NodeType = "FALLBACK" | "SEQUENCE" | "ACTION"
+export type NodeType = "SEQUENCE" | "FALLBACK" | "ACTION"
 --[=[
 	@type NodeResult "SUCCESS" | "FAILURE" | "RUNNING"
 	@within RbxBehaviorTree
@@ -51,6 +51,20 @@ export type NodeResult = "SUCCESS" | "FAILURE" | "RUNNING"
 	@within RbxBehaviorTree
 ]=]
 export type NodeAction = () -> NodeResult
+--[=[
+	@interface BehaviorTree
+	@within RbxBehaviorTree
+	.RootNode Node
+	.Destroy () -> ()
+
+	A behavior tree with a root node and a destroy function.
+]=]
+export type BehaviorTree = {
+	RootNode: Node,
+	Destroy: () -> (),
+}
+
+local isStudio = RunService:IsStudio()
 
 local function scanTreeForResult(subTree: NodeTree, excludedResult: NodeResult): NodeResult
 	for _, child in subTree do
@@ -87,16 +101,28 @@ BehaviorTree.NodeResults = {
 } :: { [string]: NodeResult }
 
 --[=[
+	@prop NodeTypes { [string]: NodeType }
+	@within RbxBehaviorTree
+
+	Enumeration of possible node types that define behavior when ticked.
+]=]
+BehaviorTree.NodeTypes = {
+	["SEQUENCE"] = "SEQUENCE",
+	["FALLBACK"] = "FALLBACK",
+	["ACTION"] = "ACTION",
+} :: { [string]: NodeType }
+
+--[=[
 	@function New
 	@within RbxBehaviorTree
 	@param tickFrequency number -- Frequency at which the behavior tree is updated (in seconds).
 	@param rootNode Node -- The root node of the behavior tree.
 	@param cleanup (() -> ())? -- Optional function to run after the behavior tree is destroyed.
-	@return function -- Returns a function to destroy the behavior tree.
+	@return BehaviorTree -- Returns a new behavior tree.
 
 	Creates a new behavior tree with a given tick frequency and root node. The behavior tree will automatically update at the given frequency until it is destroyed. This function returns a function that can be called to destroy the behavior tree.
 ]=]
-function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() -> ())?)
+function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() -> ())?): BehaviorTree
 	assert(rootNode.NodeType ~= "ACTION", "'rootNode' cannot be an action node. Must be a fallback or sequence node.")
 
 	local treeTrove = Trove.new()
@@ -114,33 +140,21 @@ function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() ->
 		return result :: NodeResult
 	end
 
-	treeTrove:Add(Timer.Simple(tickFrequency, function()
-		tickNode(runningNode or rootNode)
-	end, true, RunService.Heartbeat, os.clock))
-
-	return function()
-		treeTrove:Destroy()
-		if cleanup then
-			cleanup()
-		end
+	if not isStudio then
+		treeTrove:Add(Timer.Simple(tickFrequency, function()
+			tickNode(runningNode or rootNode)
+		end, true, RunService.Heartbeat, os.clock))
 	end
-end
 
---[=[
-	@function FallbackNode
-	@within RbxBehaviorTree
-	@param nodeName string -- Name of the fallback node.
-	@param nodeTree NodeTree -- Array of child nodes for the Fallback node.
-	@return Node -- Returns a new Fallback node.
+	if cleanup then
+		treeTrove:Add(cleanup)
+	end
 
-	Primitive for creating a FallbackNode. Think of this as your typical "OR" gate in programming. The first child node to return `SUCCESS` will cause the FallbackNode to return `SUCCESS`.
-]=]
-function BehaviorTree.FallbackNode(nodeName: string, nodeTree: NodeTree): Node
 	return {
-		NodeName = nodeName,
-		NodeType = "FALLBACK",
-		TickNode = tickFallbackNode,
-		SubTree = nodeTree,
+		RootNode = rootNode,
+		Destroy = function()
+			treeTrove:Destroy()
+		end,
 	}
 end
 
@@ -156,8 +170,26 @@ end
 function BehaviorTree.SequenceNode(nodeName: string, nodeTree: NodeTree): Node
 	return {
 		NodeName = nodeName,
-		NodeType = "SEQUENCE",
+		NodeType = BehaviorTree.NodeTypes.SEQUENCE,
 		TickNode = tickSequenceNode,
+		SubTree = nodeTree,
+	}
+end
+
+--[=[
+	@function FallbackNode
+	@within RbxBehaviorTree
+	@param nodeName string -- Name of the fallback node.
+	@param nodeTree NodeTree -- Array of child nodes for the Fallback node.
+	@return Node -- Returns a new Fallback node.
+
+	Primitive for creating a FallbackNode. Think of this as your typical "OR" gate in programming. The first child node to return `SUCCESS` will cause the FallbackNode to return `SUCCESS`.
+]=]
+function BehaviorTree.FallbackNode(nodeName: string, nodeTree: NodeTree): Node
+	return {
+		NodeName = nodeName,
+		NodeType = BehaviorTree.NodeTypes.FALLBACK,
+		TickNode = tickFallbackNode,
 		SubTree = nodeTree,
 	}
 end
@@ -174,7 +206,7 @@ end
 function BehaviorTree.ActionNode(nodeName: string, action: NodeAction): Node
 	return {
 		NodeName = nodeName,
-		NodeType = "ACTION",
+		NodeType = BehaviorTree.NodeTypes.ACTION,
 		TickNode = function()
 			return action()
 		end,
