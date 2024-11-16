@@ -7,4 +7,4 @@ sidebar_position: 3
 
 Our plugin to visualize behavior trees is currently in development.
 
-![Image](images/pluginPreview.png)
+![Image](../images/pluginPreview.png)
