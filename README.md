@@ -15,3 +15,6 @@ A simple behavior tree implementation for Roblox. The [plugin](https://github.co
 
 [View docs](https://fangous.github.io/RbxBehaviorTree/)
 
+<div align="center">
+    <a href="https://github.com/Fangous/RbxBehaviorTree"><img src="images/pluginPreview.jpg" alt="Plugin Link" height="215" /></a>
+</div>
