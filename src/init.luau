@@ -7,8 +7,8 @@
 ]=]
 local RunService = game:GetService("RunService")
 
-local Trove = require(script.Parent.Trove)
-local Timer = require(script.Parent.Timer)
+local Trove = require(script.Parent.Trove) :: any
+local Timer = require(script.Parent.Timer) :: any
 
 --[=[
 	@interface Node
