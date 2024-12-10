@@ -11,10 +11,11 @@
 
 # RbxBehaviorTree
 
-A simple behavior tree implementation for Roblox. The [plugin](https://github.com/Fangous/RbxBehaviorTree) is currently in development.
+A simple [behavior tree](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control)) implementation for Roblox.
 
-[View docs](https://fangous.github.io/RbxBehaviorTree/)
+[Documentation](https://fangous.github.io/RbxBehaviorTree/)
+[Roblox Studio Plugin](https://github.com/Fangous/RbxBehaviorTreeVisualizer/)
 
 <div align="center">
-    <a href="https://github.com/Fangous/RbxBehaviorTree"><img src="images/pluginPreview.png" alt="Plugin Link" height="420" /></a>
+    <a href="https://github.com/Fangous/RbxBehaviorTree/"><img src="images/pluginPreview.png" alt="Plugin Link" height="420" /></a>
 </div>
