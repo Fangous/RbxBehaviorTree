@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Example
 
-Here is an example ```TestTree.luau``` module, from the video tutorial:
+Here is an example ```TestTree.luau``` module, from the video tutorial: (do this)
 
 ```lua
 --!strict
