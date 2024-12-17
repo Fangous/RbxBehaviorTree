@@ -123,7 +123,7 @@ BehaviorTree.NodeTypes = {
 	Creates a new behavior tree with a given tick frequency and root node. The behavior tree will automatically update at the given frequency until it is destroyed. This function returns a function that can be called to destroy the behavior tree.
 ]=]
 function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() -> ())?): BehaviorTree
-	assert(rootNode.NodeType ~= "ACTION", "'rootNode' cannot be an action node. Must be a fallback or sequence node.")
+	assert(rootNode.NodeType ~= BehaviorTree.NodeTypes.ACTION, "Param 'rootNode' cannot be an action node. Must be a fallback or sequence node.")
 
 	local treeTrove = Trove.new()
 	local runningNode: Node? = nil
@@ -131,9 +131,9 @@ function BehaviorTree.New(tickFrequency: number, rootNode: Node, cleanup: (() ->
 	local function tickNode(node: Node): NodeResult
 		local result = node.TickNode(node.SubTree)
 
-		if result == "RUNNING" then
+		if result == BehaviorTree.NodeResults.RUNNING then
 			runningNode = node
-		elseif result == "SUCCESS" or result == "FAILURE" then
+		elseif result == BehaviorTree.NodeResults.SUCCESS or result == BehaviorTree.NodeResults.FAILURE then
 			runningNode = nil
 		end
 
