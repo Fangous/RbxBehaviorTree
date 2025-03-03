@@ -5,4 +5,4 @@ sidebar_position: 3
 
 # Plugin
 
-Our plugin to visualize behavior trees is currently in development.
+There is a matching [Roblox Studio plugin](https://github.com/Fangous/RbxBehaviorTreeVisualizer/) to help users reason with and debug larger/more complex behavior trees.

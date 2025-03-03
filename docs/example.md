@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Example
 
-Here is an example ```TestTree.luau``` module, from the video tutorial: (do this)
+Here is an example ```TestTree.rbxbtree.luau``` module:
 
 ```lua
 --!strict
@@ -84,8 +84,8 @@ return function(object: any)
 						print("Ate banana!")
 						return NodeResults.SUCCESS
 					else
+						--Currently this will never print, since our parent SequenceNode will always fail out at "OpenBanana"
 						print("Where is our banana?")
-						--Currently, this will never print, since our parent SequenceNode will always fail out at "OpenBanana"
 						return NodeResults.FAILURE
 					end
 				end),
@@ -102,7 +102,7 @@ You can now create a new TestTree behavior tree and clean it up after 10 seconds
 ```lua
 local TestTree = require(path.to.TestTree)
 
-local newTestTree = TestTree(workspace.Baseplate)
+local newTestTree = TestTree()
 task.wait(10)
 newTestTree.Destroy() -- Clean up newTestTree
 ```
