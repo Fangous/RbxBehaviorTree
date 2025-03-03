@@ -3,7 +3,7 @@
 	@class RbxBehaviorTree
 	A module for creating and managing behavior trees. Behavior trees are commonly used in game AI to control NPC behavior.
 
-	Provides nodes and functions to create complex behavior trees with fallback, sequence, and action nodes.
+	Provides primitives to create complex behavior trees with fallback, sequence, and action nodes.
 ]=]
 local RunService = game:GetService("RunService")
 

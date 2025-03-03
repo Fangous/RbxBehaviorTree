@@ -15,7 +15,7 @@ A simple [behavior tree](https://en.wikipedia.org/wiki/Behavior_tree_(artificial
 
 ## Getting Started
 
-Check out [this page](https://fangous.github.io/RbxBehaviorTree/docs/example/) for a simple example of how to use this package!
+Check out [this page](https://fangous.github.io/RbxBehaviorTree/docs/example/) for a simple example of how to use this library!
 
 ## Visualizer Plugin
 
